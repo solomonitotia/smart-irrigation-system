@@ -26,9 +26,6 @@ void setup() {
   while (!Serial) {
     ; // wait for serial port to connect. Needed for native USB port only
   }
-//DHTAcq();
-//sdCardWrite("test3.txt");
-//sdCardRead("test3.txt");
 
 }
 void Initialize_SDcard()
@@ -55,94 +52,13 @@ void Initialize_RTC()
    // Initialize the rtc object
   rtc.begin();
 
-//#### The following lines can be uncommented to set the date and time for the first time###  
-/*
-rtc.setDOW(FRIDAY);     // Set Day-of-Week to SUNDAY
-rtc.setTime(18, 46, 45);     // Set the time to 12:00:00 (24hr format)
-rtc.setDate(2, 26, 2019);   // Set the date to feb 26th, 2019 
-*/
-}
+
 void Initialize_PlxDaq()
 {
 Serial.println("CLEARDATA"); //clears up any data left from previousprojects
 //Serial.print(",\t");
 Serial.println("LABEL,__Date,___Time,___Temp,__Humidity");//always write LABEL, to indicate it as first line
-//Serial.println("LABEL");
-//Serial.println("DATE");
 
-//Serial.print(",\t");
-//Serial.print(",\t");
-}
-/*void DHTAcq()
-  {
-    Serial.println("DHT11, \t");
-    int chk = DHT.read11(DHT11_PIN);
-    
-    Serial.print(DHT.humidity, 1);
-    Serial.print(",\t");
-    Serial.print(DHT.temperature, 1);
-    delay(1000);  
-  }
-
-void sdCardWrite(String fileNameStr )
-  {
-      Serial.println("Initializing SD card");
-  
-    if (!SD.begin(4)) 
-      {
-        Serial.println( "Initilization failed.");
-        return;
-      }
-    Serial.println("Initilization done!");
-  
-    // open the file. note that only one file can be open at a time,
-    // so you have to close this one before opening another.
-    myFile = SD.open(fileNameStr, FILE_WRITE);
-  
-    // if the file opened okay, write to it:
-    if (myFile) 
-      {
-       /* myFile.println("DHT11, \t");
-        int chk = DHT.read11(DHT11_PIN);
-        
-        myFile.print(DHT.humidity, 1);
-        myFile.print(",\t");
-        myFile.print(DHT.temperature, 1);
-        myFile.close();
-        Serial.println("done!");
-        delay(5000);*/
-       
-       
-     /* } 
-    else 
-      {
-        // if the file didn't open, print an error:
-        Serial.println("error opening test.txt");
-      }
-  }*/
-
- /* void sdCardRead(String fileName)
-  {
-     // re-open the file for reading:
-    myFile = SD.open(fileName);
-    if (myFile) 
-      {
-        Serial.println("test.txt:");
-    
-        // read from the file until there's nothing else in it:
-        while (myFile.available())
-          {
-            Serial.write(myFile.read());
-          }
-        // close the file:
-        myFile.close();
-      } 
-    else 
-      {
-        // if the file didn't open, print an error:
-        Serial.println("error opening test.txt");
-      }
-  }*/
 
 void loop() {
 moistureSensorValue = analogRead(3); // reads the sensor
@@ -243,9 +159,4 @@ void Write_SDcard()
     Serial.print(",\t");
   }
 
- /*int chk = DHT.read11(DHT11_PIN);
-  Serial.print("Temperature = ");
-  Serial.println(DHT.temperature);
-  Serial.print("Humidity = ");
-  Serial.println(DHT.humidity);
- delay (1000);*/
+
